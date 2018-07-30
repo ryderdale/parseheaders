@@ -22,3 +22,5 @@ Vary: Accept-Encoding
 ```
 
 Your task is to write a function named `parseHeaders` that takes that chunk of text and returns an object describing the headers and body of the HTTP response. The object should have a `obj.body` that contains the body text, and an `obj.headers` that contains all of the key/value pairs in the response header. The object should also have `obj.version` and `obj.code` that contain the HTTP version and response code, respectively.
+
+Run the tests with `npm test`.
