@@ -3,19 +3,27 @@
 /* eslint-env node */
 
 function parseHeaders(string) {
-    let stringArr = string.split("\n");
-    const [version, code] = stringArr.shift().split(' ');
-    const returnObject = {version, code, headers: {}};
-    while (stringArr.length > 0) {
-        let intraArray = stringArr.shift().split(': ', 2);
-        if(intraArray.length !== 2) {
-            break;
+    let strArr = string.split('\n');
+    let returnObj = {}
+    let [version, code] = strArr.shift().split(' ');
+    returnObj = {version, code};
+    console.log(returnObj);
+    returnObj['headers'] = {};
+    while(strArr.length > 0) {
+        console.log(returnObj)
+        let intraArr = strArr.shift().split(': ');
+        console.log(intraArr);
+        if (intraArr.length !== 2) {
+            break
         }
-        returnObject['headers'][intraArray[0]] = intraArray[1];
+        returnObj['headers'][intraArr[0]] = intraArr[1];
     }
-    returnObject.body = stringArr.join()
-    console.log(returnObject);
-    return returnObject;
+    returnObj.body = strArr.join();
+    console.log(returnObj);
+    return returnObj 
 };
 
 module.exports = parseHeaders;
+
+
+    
