@@ -1,0 +1,25 @@
+{
+  "name": "httpheaders",
+  "version": "1.0.0",
+  "description": "Here's the raw HTTP response when you `GET http://www.google.com/`:",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jasmine spec/spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcmajcher/parseheaders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcmajcher/parseheaders/issues"
+  },
+  "homepage": "https://github.com/marcmajcher/parseheaders#readme",
+  "dependencies": {
+    "jasmine": "^3.1.0"
+  }
+}

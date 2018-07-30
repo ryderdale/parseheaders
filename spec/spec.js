@@ -1,9 +1,11 @@
-# Parsing HTTP Headers
+'use strict';
 
-Here's the raw HTTP response when you `GET http://www.google.com/`:
+const parseHeaders = require('../parseHeaders');
 
-```
-HTTP/1.0 200 OK
+/* eslint-env node */
+/* eslint-env jasmine */
+
+const testResponse = `HTTP/1.0 200 OK
 Date: Mon, 30 Jul 2018 14:13:41 GMT
 Expires: -1
 Cache-Control: private, max-age=0
@@ -18,7 +20,16 @@ Accept-Ranges: none
 Vary: Accept-Encoding
 
 <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="en"><head><meta content="Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for." name="description">
-<!-- ALL THE REST OF THE HTML --></div></body></html>
-```
+<!-- ALL THE REST OF THE HTML --></div></body></html>`;
 
-Your task is to write a function named `parseHeaders` that takes that chunk of text and returns an object describing the headers and body of the HTTP response. The object should have a `obj.body` that contains the body text, and an `obj.headers` that contains all of the key/value pairs in the response header. The object should also have `obj.version` and `obj.code` that contain the HTTP version and response code, respectively.
+describe('Parse Headers', () => {
+    const obj = parseHeaders(testResponse);
+
+    it('gets the version', () => {
+        expect(obj.version).toBe('HTTP/1.0');
+    });
+
+    it('gets the response code', () => {
+        expect(obj.code).toBe('200 OK');
+    });
+});
