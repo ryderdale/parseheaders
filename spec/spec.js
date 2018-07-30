@@ -30,6 +30,16 @@ describe('Parse Headers', () => {
     });
 
     it('gets the response code', () => {
-        expect(obj.code).toBe('200 OK');
+        expect(['200', '200 OK']).toContain(obj.code);
+    });
+
+    it('gets all the keys', () => {
+        expect(obj.headers.Date).toBe('Mon, 30 Jul 2018 14:13:41 GMT');
+        expect(obj.headers['X-Frame-Options']).toBe('SAMEORIGIN');
+        expect(obj.headers['Content-Type']).toBe('text/html; charset=ISO-8859-1');
+    });
+
+    it('gets the body', () => {
+        expect(obj.body).toMatch(/ALL THE REST/);
     });
 });
